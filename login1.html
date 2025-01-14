@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced 3D Animated Login Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #5c3b2e; /* Dark Brown */
+        --secondary-color: #d7b490; /* Light Brown/Beige */
+        --accent-color: #a56a43; /* Medium Brown */
+        --text-color: #3e3e3e; /* Dark Gray */
+        --background-color: #f9f5f0; /* Off-White */
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        background-image: url('/images/image.png'); /* Use the image path you uploaded */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        perspective: 1000px;
+        overflow-x: hidden;
+      }
+
+      .background-shape {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        border-radius: 50%;
+        filter: blur(30px);
+        opacity: 0.5;
+        animation: float 10s ease-in-out infinite;
+      }
+
+      .shape1 { top: -150px; left: -150px; }
+      .shape2 { bottom: -150px; right: -150px; animation-delay: -5s; }
+
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(50px, 50px) rotate(15deg); }
+        50% { transform: translate(0, 100px) rotate(0deg); }
+        75% { transform: translate(-50px, 50px) rotate(-15deg); }
+      }
+
+      .login-container {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        padding: 40px;
+        width: 90%;
+        max-width: 400px;
+        transform-style: preserve-3d;
+        animation: container-entrance 1s ease-out;
+      }
+
+      @keyframes container-entrance {
+        from { transform: translateZ(-1000px) rotateY(20deg); opacity: 0; }
+        to { transform: translateZ(0) rotateY(0); opacity: 1; }
+      }
+
+      .form-title {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        animation: title-glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes title-glow {
+        from { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+        to { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        transform: translateZ(20px);
+        transition: all 0.3s ease;
+      }
+
+      .form-group:hover {
+        transform: translateZ(30px) scale(1.05);
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-color);
+        transition: color 0.3s ease;
+      }
+
+      .form-group:hover label {
+        color: var(--primary-color);
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f0f0;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(92, 59, 46, 0.3);
+        background-color: #fff;
+      }
+
+      .submit-btn {
+        background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        width: 100%;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        transform: translateZ(30px);
+      }
+
+      .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: all 0.5s;
+      }
+
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+
+      .submit-btn:active {
+        transform: translateZ(20px) scale(0.98);
+      }
+
+      .forgot-password {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .forgot-password a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .forgot-password a:hover {
+        color: var(--accent-color);
+      }
+
+      @media (max-width: 768px) {
+        .login-container {
+          width: 95%;
+          padding: 30px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+
+    <div class="login-container">
+        <h2 class="form-title">Welcome Back</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            // Redirect to another page (change 'your-route.html' to your desired route)
+            window.location.href = 'page.html';
+        });
+
+        document.querySelectorAll('.form-group').forEach(group => {
+            group.addEventListener('mousemove', (e) => {
+                const rect = group.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                group.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 10}deg) rotateY(${-(x - rect.width / 2) / 10}deg) translateZ(30px)`;
+            });
+
+            group.addEventListener('mouseleave', () => {
+                group.style.transform = 'translateZ(20px)';
+            });
+        });
+    </script>
+</body>
+</html>

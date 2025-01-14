@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Check Your Case Status</title>
+    <style>
+        body {
+    font-family: 'Georgia', serif;
+    background-color: #f8d8a5; /* Lighter cream background */
+    margin: 0;
+    padding: 0;
+    color: #e13409; /* Dark brown text */
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fef6e4; /* Cream card background */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border-top: 4px solid #543324; /* Dark brown border */
+}
+
+h1 {
+    text-align: center;
+    color: #543324; /* Dark brown header text */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    text-align: center;
+    color: #6d5d4b; /* Softer brown paragraph text */
+    font-size: 1.1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #543324; /* Dark brown label text */
+    font-size: 1.1em;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #c7a17e; /* Light brown border */
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button {
+    padding: 14px;
+    background-color: #543324; /* Dark brown button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #785f48; /* Lighter brown on hover */
+    box-shadow: 5px 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.captcha {
+    margin-bottom: 20px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fef6e4; /* Matching the container background */
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-top: 4px solid #543324; /* Dark brown modal border */
+}
+
+.modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #543324; /* Dark brown modal header */
+    margin-bottom: 15px;
+}
+
+.modal-body p {
+    margin: 10px 0;
+    color: #3e3a39; /* Matching body text color */
+}
+
+.close {
+    color: #888;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Contact and Disclaimer */
+.contact-info, .disclaimer {
+    margin-top: 30px;
+    color: #6d5d4b; /* Softer brown contact text */
+}
+
+.contact-info a {
+    color: #543324; /* Dark brown link text */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.disclaimer {
+    font-size: 0.9em;
+    color: #857d73; /* Faded brown disclaimer text */
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Check Your Case Status</h1>
+    <p>Use the form below to check the current status of your legal case.</p>
+
+    <form id="caseStatusForm">
+        <label for="caseNumber">Case Number (required):</label>
+        <input type="text" id="caseNumber" name="caseNumber" required placeholder="Enter your case number">
+
+        <label for="petitionerName">Petitioner's Name (optional):</label>
+        <input type="text" id="petitionerName" name="petitionerName" placeholder="Enter petitioner's name">
+
+        <label for="respondentName">Respondent's Name (optional):</label>
+        <input type="text" id="respondentName" name="respondentName" placeholder="Enter respondent's name">
+
+        <label for="filingDate">Date of Filing (optional):</label>
+        <input type="date" id="filingDate" name="filingDate">
+
+        <!-- CAPTCHA placeholder -->
+        <div class="captcha">
+            <label for="captcha">Enter CAPTCHA:</label>
+            <input type="text" id="captcha" name="captcha" required placeholder="Enter the CAPTCHA">
+        </div>
+
+        <button type="submit">Check Status</button>
+    </form>
+
+    <!-- Contact Information -->
+    <div class="contact-info">
+        <p>If you need further assistance, please contact our support team at <a href="mailto:support@yourlawfirm.com">support@yourlawfirm.com</a> or call 1-800-123-4567.</p>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> The information provided here is subject to change. Please verify all information with your legal representative or the court.</p>
+    </div>
+</div>
+
+<!-- Modal for Case Status -->
+<div id="caseStatusModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">Case Status</div>
+        <div class="modal-body">
+            <p><strong>Case Number:</strong> <span id="caseNumberResult"></span></p>
+            <p><strong>Current Status:</strong> <span id="caseStatus"></span></p>
+            <p><strong>Next Hearing Date:</strong> <span id="hearingDate"></span></p>
+            <p><strong>Court Location:</strong> <span id="courtLocation"></span></p>
+            <p><strong>Petitioner vs Respondent:</strong> <span id="caseParties"></span></p>
+            <p><strong>Recent Updates:</strong> <span id="recentUpdates"></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get modal element
+    var modal = document.getElementById("caseStatusModal");
+    var closeModal = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Form submission event
+    document.getElementById('caseStatusForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Mock data for result section (replace with actual case status fetching)
+        var caseNumber = document.getElementById('caseNumber').value;
+        var mockStatus = "Pending";
+        var mockHearingDate = "2024-10-12";
+        var mockCourtLocation = "New Delhi District Court";
+        var mockParties = "John Doe vs Jane Roe";
+        var mockUpdates = "Hearing rescheduled";
+
+        // Display the result
+        document.getElementById('caseNumberResult').textContent = caseNumber;
+        document.getElementById('caseStatus').textContent = mockStatus;
+        document.getElementById('hearingDate').textContent = mockHearingDate;
+        document.getElementById('courtLocation').textContent = mockCourtLocation;
+        document.getElementById('caseParties').textContent = mockParties;
+        document.getElementById('recentUpdates').textContent = mockUpdates;
+
+        // Show the modal
+        modal.style.display = "block";
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration Form</title>
+    <style>
+        /* General Styles */
+      /* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(145deg, #f7d6ba, #c4a484);
+    background-image: url('/images/image\ copy.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Shapes with Parallax Effect */
+.background-shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(30px);
+    transform: translateZ(-100px);
+}
+
+.shape1 {
+    top: -80px;
+    left: -80px;
+    background-color: #ffe6d5;
+}
+
+.shape2 {
+    bottom: -80px;
+    right: -80px;
+    background-color: #d7b9a3;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(20px);
+    }
+}
+
+/* Registration Form Container */
+.registration-container {
+    width: 50%;
+    padding: 40px;
+    background: rgba(255, 245, 235, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 400px;
+}
+
+.registration-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Title */
+.form-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #5c4c3b;
+    font-weight: 600;
+}
+
+/* Form Layout */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #4a3b29;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    border: 1px solid #ccbba4;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    border-color: #f7a977;
+    outline: none;
+}
+
+/* 3D Submit Button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(145deg, #f7a977, #d76a3e);
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #d76a3e, #f7a977);
+    z-index: -1;
+    transform: scale(0);
+    transition: transform 0.4s;
+    border-radius: 10px;
+}
+
+.submit-btn:hover::before {
+    transform: scale(2);
+}
+
+.submit-btn:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .registration-container {
+        width: 85%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+
+    <div class="registration-container">
+        <h2 class="form-title">Register</h2>
+        <form id="registration-Form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter a password" required>
+            </div>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('registration-Form').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            // Redirect to another page (change 'your-route.html' to your desired route)
+            window.location.href = 'page.html';
+        });
+
+        document.querySelectorAll('.form-group').forEach(group => {
+            group.addEventListener('mousemove', (e) => {
+                const rect = group.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                group.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 10}deg) rotateY(${-(x - rect.width / 2) / 10}deg) translateZ(30px)`;
+            });
+
+            group.addEventListener('mouseleave', () => {
+                group.style.transform = 'translateZ(20px)';
+            });
+        });
+    </script>
+</body>
+</html>

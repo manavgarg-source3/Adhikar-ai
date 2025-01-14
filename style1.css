@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5d6ab; /* Light beige theme from the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .profile-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+    perspective: 1000px; /* 3D perspective */
+  }
+  
+  .profile-card {
+    background-color: #ffefd5; /* Pale color inspired by the image */
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .profile-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-info h1 {
+    font-size: 26px;
+    margin-top: 10px;
+    color: #4b3f35; /* Brown shade from the image */
+  }
+  
+  .bio {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b3f35;
+    margin: 10px 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    color: #333;
+    margin: 15px 0;
+  }
+  
+  .social-media a {
+    color: #4b3f35;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.2s ease;
+  }
+  
+  .social-media a:hover {
+    color: #c48c6f;
+  }
+  
+  /* Blog Section */
+  .blog-section {
+    background-color: #ffefd5;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transform: translateZ(0); /* Flat start, 3D elements enhance */
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .blog-section:hover {
+    transform: translateZ(20px); /* 3D pop-out effect */
+  }
+  
+  .blog-section h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #4b3f35;
+  }
+  
+  .blog-card {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #c48c6f; /* Accent from the image */
+  }
+  
+  .blog-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #4b3f35;
+  }
+  
+  .blog-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .blog-card a {
+    color: #c48c6f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .blog-card a:hover {
+    text-decoration: underline;
+    color: #4b3f35;
+  }
+  
+  /* Button Styling */
+  button {
+    background-color: #4b3f35;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #c48c6f;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  .home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #4b3f35;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background-color: #c48c6f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
